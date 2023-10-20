@@ -27,7 +27,7 @@ jobs:
       uses: MeilCli/slack-upload-file@v3
       id: report
       with:
-        slack_token: ${{ secrets.SLACK_TOKEN }}
+        slack_token: ${{ secrets.slack_token }}
         channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
         file_path: 'report.txt'
         initial_comment: 'post by slack-upload-file'
