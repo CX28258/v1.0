@@ -8,14 +8,14 @@ jobs:
 
     steps:
     - name: Check Commit Message
-        id: check_message
-        run: |
-          if [[ $(git log -1 --pretty=%B) == '#NORUN'* ]]; then
-            echo "Commit message starts with #NORUN. Cancelling the workflow."
-            exit 1
-          fi
-        continue-on-error: true
-        
+      id: check_message
+      run: |
+        if [[ $(git log -1 --pretty=%B) == '#NORUN'* ]]; then
+          echo "Commit message starts with #NORUN. Cancelling the workflow."
+          exit 1
+        fi
+      continue-on-error: true
+
     - name: Checkout
       uses: actions/checkout@v4
 
