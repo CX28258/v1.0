@@ -68,7 +68,7 @@ jobs:
 
     - name: Sign image with a key
       run: |
-        cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0:${{  github.sha  }}
+        cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0@sha256:14a6f7a43afc448e9fec774c95e0f9764e240434f8aa94e5da6196258b7d17ca
       env:
         TAGS: ${{ steps.docker_meta.outputs.tags }}
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
