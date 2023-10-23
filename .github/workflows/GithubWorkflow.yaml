@@ -11,8 +11,8 @@ jobs:
       id: check_message
       run: |
         if [[ "${{ github.event.head_commit.message }}" == "#NORUN" ]]; then
-          echo "Commit message starts with #NORUN, skipping the workflow."
-          exit 78 # Use a non-zero exit code to indicate skipping the workflow
+          echo "Commit message starts with #NORUN, cancelling the workflow."
+          exit 78 # Use a non-zero exit code to indicate cancelling the workflow
         fi
       continue-on-error: true
 
