@@ -39,8 +39,8 @@ jobs:
         SLACK_CHANNEL: general
         SLACK_USERNAME: CX23333333
         SLACK_COLOR: danger
-        SLACK_MESSAGE: "Cheng Xi \n abc123 \n chengx28258@163.com \n https://github.com/CX28258/v1.0.git \n https://hub.docker.com/repository/docker/chengx28258/v1.0/general"
-        SLACK_TITLE: Name \n Metriculation \n Email \n Git \n Image
+        SLACK_MESSAGE: "Name:Cheng Xi \n Metriculation:abc123 \n Email:chengx28258@163.com \n Git:https://github.com/CX28258/v1.0.git \n Image:https://hub.docker.com/repository/docker/chengx28258/v1.0/general"
+        SLACK_TITLE: Image Build and Sign
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Install Cosign
