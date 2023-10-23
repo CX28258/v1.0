@@ -18,7 +18,7 @@ jobs:
         format: 'table'
         output: 'report.txt'
         severity: 'HIGH'
-        #exit-code: '1'
+        exit-code: '1'
 
     # - name: Check Trivy Scan Status
     #   run: exit ${{ steps. trivy-scan.outputs.exit_code }}
@@ -28,6 +28,7 @@ jobs:
       run: echo "$(ls -l)"
 
     - name: Send Report to Slack
+      if: failure()
       uses: MeilCli/slack-upload-file@v3
       id: report
       with:
