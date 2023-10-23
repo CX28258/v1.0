@@ -38,43 +38,43 @@ jobs:
       env:
         SLACK_CHANNEL: general
         SLACK_USERNAME: CX233
-        SLACK_COLOR: danger
-        SLACK_MESSAGE: "Failed trivy scan, see uploaded report"
-        SLACK_TITLE: Scan failed - Cheng
-        #SLACK_COLOR: ${{ job.status }}
-        #SLACK_MESSAGE: "Name:Cheng Xi \n Metriculation:A0287257N \n Email:chengx28258@163.com \n Git:https://github.com/CX28258/v1.0.git \n Image:https://hub.docker.com/repository/docker/chengx28258/v1.0/general"
-        #SLACK_TITLE: Image Build and Sign
+        #SLACK_COLOR: danger
+        #SLACK_MESSAGE: "Failed trivy scan, see uploaded report"
+        #SLACK_TITLE: Scan failed - Cheng
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_MESSAGE: "Name:Cheng Xi \n Metriculation:A0287257N \n Email:chengx28258@163.com \n Git:https://github.com/CX28258/v1.0.git \n Image:https://hub.docker.com/repository/docker/chengx28258/v1.0/general"
+        SLACK_TITLE: Image Build and Sign
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-    # - name: Install Cosign
-    #   uses: sigstore/cosign-installer@v3.1.1
-    #   with:
-    #     cosign-release: 'v2.2.0'
+    - name: Install Cosign
+      uses: sigstore/cosign-installer@v3.1.1
+      with:
+        cosign-release: 'v2.2.0'
 
-    # - name: Set up QEMU
-    #   uses: docker/setup-qemu-action@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
 
-    # - name: Set up Docker Buildx
-    #   uses: docker/setup-buildx-action@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
-    # - name: Login to Docker Hub
-    #   uses: docker/login-action@v3
-    #   with:
-    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    # - name: Build and push
-    #   uses: docker/build-push-action@v5
-    #   with:
-    #     push: true
-    #     tags: chengx28258/v1.0:8e8b9601b5237eb3f3a3888a4a5951bbd5000a22
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: chengx28258/v1.0:8e8b9601b5237eb3f3a3888a4a5951bbd5000a22
 
-    # - name: Sign image with a key
-    #   run: |
-    #     cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0@sha256:14a6f7a43afc448e9fec774c95e0f9764e240434f8aa94e5da6196258b7d17ca
-    #   env:
-    #     TAGS: ${{ steps.docker_meta.outputs.tags }}
-    #     COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-    #     COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-    #     DIGEST: ${{ steps.build-and-push.outputs.digest }}
+    - name: Sign image with a key
+      run: |
+        cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0@sha256:14a6f7a43afc448e9fec774c95e0f9764e240434f8aa94e5da6196258b7d17ca
+      env:
+        TAGS: ${{ steps.docker_meta.outputs.tags }}
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+        DIGEST: ${{ steps.build-and-push.outputs.digest }}
 
