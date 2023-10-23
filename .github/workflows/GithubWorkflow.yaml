@@ -18,7 +18,7 @@ jobs:
         format: 'table'
         output: 'report.txt'
         severity: 'HIGH'
-        exit-code: 1
+        exit-code: '1'
 
     # - name: Check Trivy Scan Status
     #   run: exit ${{ steps. trivy-scan.outputs.exit_code }}
