@@ -33,15 +33,23 @@ jobs:
         file_path: 'report.txt'
         initial_comment: 'post by ChengXi'
 
-    # - name: Slack Notification
-    #   uses: rtCamp/action-slack-notify@v2
-    #   env:
-    #     SLACK_CHANNEL: general
-    #     SLACK_USERNAME: CX23333333
-    #     SLACK_COLOR: danger
-    #     SLACK_MESSAGE: "Cheng Xi"
-    #     SLACK_TITLE: Name
-    #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_CHANNEL: general
+        SLACK_USERNAME: CX23333333
+        SLACK_COLOR: danger
+        SLACK_MESSAGE: "Cheng Xi"
+                       "abc123"
+                       "chengx28258@163.com"
+                       "https://github.com/CX28258/v1.0.git"
+                       "https://hub.docker.com/repository/docker/chengx28258/v1.0/general"
+        SLACK_TITLE: Name
+                     Metriculation
+                     Email
+                     Git
+                     Image
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
     - name: Install Cosign
       uses: sigstore/cosign-installer@v3.1.1
