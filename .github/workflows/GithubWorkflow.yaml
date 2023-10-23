@@ -14,7 +14,6 @@ jobs:
           echo "Commit message starts with #NORUN, cancelling the workflow."
           exit 1 # Use a non-zero exit code to indicate cancelling the workflow
         fi
-      continue-on-error: true
 
     - name: Checkout
       uses: actions/checkout@v4
