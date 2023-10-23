@@ -64,12 +64,12 @@ jobs:
         push: true
         tags: chengx28258/v1.0:8e8b9601b5237eb3f3a3888a4a5951bbd5000a22
 
-    # - name: Sign image with a key
-    #     run: |
-    #       cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0:${{  github.sha  }}
-    #     env:
-    #       TAGS: ${{ steps.docker_meta.outputs.tags }}
-    #       COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-    #       COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-    #       DIGEST: ${{ steps.build-and-push.outputs.digest }}
+    - name: Sign image with a key
+      run: |
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY chengx28258/v1.0:${{  github.sha  }}
+        env:
+          TAGS: ${{ steps.docker_meta.outputs.tags }}
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          DIGEST: ${{ steps.build-and-push.outputs.digest }}
 
