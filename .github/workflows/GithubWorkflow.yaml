@@ -25,7 +25,7 @@ jobs:
         ignore-unfixed: true
         format: 'table'
         output: 'report.txt'
-        severity: 'HIGH'
+        severity: 'HIGH,CRITICAL'
         exit-code: '1'
 
     - name: directory
