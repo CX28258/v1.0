@@ -31,19 +31,19 @@ jobs:
     - name: directory
       run: echo "$(ls -l)"
 
-    # - name: Send Report to Slack
-    #   if: failure()
-    #   uses: MeilCli/slack-upload-file@v3
-    #   id: report
-    #   with:
-    #     slack_token: ${{ secrets.SLACK_TOKEN }}
-    #     channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
-    #     file_path: 'report.txt'
-    #     initial_comment: 'post by ChengXi'
+    - name: Send Report to Slack
+      if: failure()
+      uses: MeilCli/slack-upload-file@v3
+      id: report
+      with:
+        slack_token: ${{ secrets.SLACK_TOKEN }}
+        channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+        file_path: 'report.txt'
+        initial_comment: 'post by ChengXi'
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
-      if: failure()
+      #if: failure()
       env:
         SLACK_CHANNEL: general
         SLACK_USERNAME: CX233
