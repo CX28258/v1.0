@@ -34,8 +34,10 @@ jobs:
         slack_token: ${{ secrets.SLACK_TOKEN }}
         channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
         text: "$(cat report.txt)"
+        file_type: 'text'
         file_path: 'report.txt'
-        initial_comment: 'post by slack-upload-file'
+        file_name: 'report.txt'
+        initial_comment: 'post by ChengXi'
 
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
